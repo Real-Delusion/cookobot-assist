@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://192.168.1.10">
     <title>Cookobot Assist</title>
     <link rel="stylesheet" href="css/bulma.min.css">
     <script src="js/socket.io.js"></script>
@@ -12,7 +14,7 @@
 <body>
     <h1>Cookobot Assist App</h1>
     <input id="message" type="text">
-    <button onclick="sendIssue()">Send</button>
+    <button onclick="sendIssue()" class="button is-primary">Send</button>
 </body>
 <script>
     var socket = io('http://192.168.1.124:3000');
