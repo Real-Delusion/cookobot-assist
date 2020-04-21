@@ -15,14 +15,14 @@
 <body>
     <div id="app">
         <!-- Notifications -->
-        <div v-show="!connected" class="notification is-danger">
-            <button class="delete"></button>
-            Unable to connect to the control panel.
-        </div>
-
         <div v-show="connected" class="notification is-success">
             <button class="delete"></button>
             Connected to control panel!
+        </div>
+
+        <div v-show="!connected" class="notification is-info">
+            <button class="delete"></button>
+            Sorry, there is problem with the server. Please ask for help.
         </div>
         <!--  -->
 
