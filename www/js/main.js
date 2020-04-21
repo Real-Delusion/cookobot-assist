@@ -32,7 +32,7 @@ socket.on('disconnect', () => {
 });
 
 function sendIssue() {
-    let message = document.getElementById('message').value.toString();
-    socket.emit('issue', message);
+    socket.emit('issue', app.table);
+    console.log("Issue sent from table:"+app.table)
 }
 
