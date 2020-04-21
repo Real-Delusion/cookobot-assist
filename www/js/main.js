@@ -5,7 +5,16 @@
 var app = new Vue({
     el: '#app',
     data: {
-        connected: false
+        connected: false,
+        table: ""
+    },
+    mounted: function () {
+        this.table = localStorage.getItem("table");
+    },
+    watch: {
+        table(newTable) {
+            localStorage.table = newTable;
+        }
     }
 })
 
