@@ -14,10 +14,7 @@
 
 <body>
     <div id="app">
-        <h1>Cookobot Assist App</h1>
-        <input id="message" type="text">
-        <button onclick="sendIssue()" class="button is-primary">Send</button>
-
+        <!-- Notifications -->
         <div v-show="!connected" class="notification is-danger">
             <button class="delete"></button>
             Unable to connect to the control panel.
@@ -27,6 +24,11 @@
             <button class="delete"></button>
             Connected to control panel!
         </div>
+        <!--  -->
+        
+        <h1>Cookobot Assist App</h1>
+        <input id="message" type="text">
+        <button onclick="sendIssue()" class="button is-primary">Send</button>
     </div>
 </body>
 <script src="js/main.js"></script>
