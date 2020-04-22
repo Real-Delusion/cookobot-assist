@@ -9,6 +9,7 @@ var app = new Vue({
         table: "",
         controlNotifications: false,
         apartado: 1,
+        issue: "",
     },
     mounted: function () {
         this.table = localStorage.getItem("table");
@@ -38,6 +39,14 @@ var app = new Vue({
                 
             }
         },
+        changeView: function(){
+            this.apartado += 1;
+        },
+        selectIssue: function(issue){
+            this.issue = issue;
+            this.changeView();
+
+        }
     },
     watch: {
         table(newTable) {
