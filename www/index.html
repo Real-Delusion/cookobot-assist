@@ -29,44 +29,66 @@
         </div>
 
 
-        <div id="contentPage">
+        <div class="pageContentView">
             <!-- Apartado 1 -->
-            <div class="pageContentView">
-                <div class="columns is-marginless is-centered" style="display: flex; flex-direction: column; height: 100%;">
-                    <div id="logoContainer">
+            <div class="pageContentView" v-if="apartado == 1">
+                <div class="columns" style="height: 35%">
+                    <div class="column is-12 alingCenter">
                         <div id="logo">
                             <img src="./img/logo-negro.png" />
                         </div>
                     </div>
-                    <div id="selectableTable">
-                        <div class="columns is-marginless is-full">
-                            <div class="column is-one-quarter">
-                                <button onclick="sendIssue()" class="button is-primary">Send</button>
+                </div>
+
+                <div class="columns" style="height: 35%">
+                    <div class="column is-3 alingCenter">
+                        <button @click="changeTable('menos')" class="button is-info is-large nextViewButton">-</button>
+                    </div>
+                    <div class="column is-6 alingCenter">
+                        <div class="box boxSelectableTable">
+                            <label id="textBox">{{table}}</label>
+                        </div>
+                    </div>
+                    <div class="column is-3 alingCenter">
+                        <button @click="changeTable('mas')" class="button is-info is-large nextViewButton">+</button>
+                    </div>
+                </div>
+
+                <div class="columns" style="height: 30%;">
+                    <div class="column is-6  is-offset-one-quarter  alingCenter">
+                        <button onclick="sendTableIssue()"
+                            class="button is-large is-primary nextViewButton">Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apartado 2 -->
+            <div class="pageContentView" v-if="apartado == 2">
+                <div class="columns" style="height: 40%;"></div>
+                <div class="columns">
+                    <div class="column">
+                        <div class="columns">
+                            <div class="column alingCenter">
+                                <label class="title is-1">Do you have any problem?</label>
                             </div>
-                            <div class="column box" id="boxSelectableTable">
-                                <!-- Config (only admin) -->
-                                <label style="color: white;">{{table}}</label>
-                            </div>
-                            <div class="column is-one-quarter">
-                                <button onclick="sendIssue()" class="button is-primary">Send</button>
+                        </div>
+                        <div class="columns is-centered">
+                            <div class="column is-6 alingCenter">
+                                <button onclick="sendIssue()"
+                                    class="button is-primary is-large nextViewButton">Help</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Apartado 2 -->
-            <div class="pageContentView">
-                <button onclick="sendIssue()" class="button is-primary">Send</button>
-            </div>
-
             <!-- Apartado 3 -->
-            <div class="pageContentView">
+            <div class="pageContentView" v-if="apartado == 3">
                 <button onclick="sendIssue()" class="button is-primary">Send</button>
             </div>
 
             <!-- Apartado 4 -->
-            <div class="pageContentView">
+            <div class="pageContentView" v-if="apartado == 4">
                 <button onclick="sendIssue()" class="button is-primary">Send</button>
             </div>
         </div>

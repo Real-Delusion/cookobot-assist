@@ -7,7 +7,8 @@ var app = new Vue({
     data: {
         connected: false,
         table: "",
-        controlNotifications: false
+        controlNotifications: false,
+        apartado: 1,
     },
     mounted: function () {
         this.table = localStorage.getItem("table");
@@ -23,6 +24,19 @@ var app = new Vue({
                 }, 5000);
             }
             
+        },
+        changeTable: function(direccion){
+            if (direccion == "menos"){
+                mesa = parseInt(this.table);
+                if(mesa > 0) mesa -= 1;
+                this.table = mesa.toString();
+            } if (direccion == "mas") {
+                mesa = parseInt(this.table);
+                mesa += 1;
+                this.table = mesa.toString();
+            } else {
+                
+            }
         },
     },
     watch: {
@@ -50,8 +64,9 @@ socket.on('disconnect', () => {
 
 });
 
-function sendIssue() {
+function sendTableIssue() {
     socket.emit('issue', app.table);
     console.log("Issue sent from table:"+app.table)
+    app.apartado += 1;
 }
 

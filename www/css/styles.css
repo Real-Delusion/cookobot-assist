@@ -26,30 +26,36 @@ body {
     height: 100vh;
 }
 
-#contentPage{
-    height: 100vh;
-}
-
 .pageContentView{
     height: 100vh;
 }
 
 #logo {
     width: 50%;
-    align-items: center;
-}
-
-#logoContainer {
-    height: 45%;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-#selectableTable{
-    height: 55%;
+.boxSelectableTable{
+    height: 50%;
+    width: 50%;
+    background-color: var(--darkbackground);
 }
 
-#boxSelectableTable{
-    background-color: var(--darkbackground);
+#textBox{
+    color: white;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alingCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+
+.nextViewButton{
+    font-size: 2rem !important;
 }
