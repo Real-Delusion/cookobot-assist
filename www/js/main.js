@@ -44,6 +44,7 @@ var app = new Vue({
         },
         selectIssue: function(issue){
             this.issue = issue;
+            sendIssue();
             this.changeView();
 
         }
@@ -73,9 +74,8 @@ socket.on('disconnect', () => {
 
 });
 
-function sendTableIssue() {
+function sendIssue() {
     socket.emit('issue', app.table);
     console.log("Issue sent from table:"+app.table)
-    app.apartado += 1;
 }
 

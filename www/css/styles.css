@@ -45,7 +45,7 @@ body {
 
 #textBox {
     color: white;
-    font-size: 4rem;
+    font-size: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -58,7 +58,7 @@ body {
 }
 
 .nextViewButton {
-    font-size: 2rem !important;
+    font-size: 1rem !important;
 }
 
 .fade-enter-active,
@@ -81,10 +81,15 @@ body {
     margin-top: 1rem;
 }
 
-.textBox{
+.textBoxIssue{
     color: aliceblue;
 }
 
 #tick{
     width: 50%;
+}
+
+.imagesIssues{
+    width: 75%;
+    height: 75%;
 }
