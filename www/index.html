@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://192.168.1.10">
+        content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost">
     <title>Cookobot Assist</title>
     <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="js/vue.js"></script>
     <script src="js/socket.io.js"></script>
 </head>
@@ -15,23 +16,171 @@
 <body>
     <div id="app">
         <!-- Notifications -->
-        <div v-show="connected" class="notification is-success">
-            <button class="delete"></button>
-            Connected to control panel!
+        <div v-if="controlNotifications" id="topView">
+            <div v-if="connected" class="notification is-success" style="margin: 0.1rem">
+                <button class="delete" @click="hideNotifications('now')"></button>
+                Connected to control panel!
+            </div>
+
+            <div v-if="!connected" class="notification is-danger">
+                <button class="delete" @click="hideNotifications('now')"></button>
+                Sorry, there is problem with the server. Please ask for help.
+            </div>
         </div>
 
-        <div v-show="!connected" class="notification is-info">
-            <button class="delete"></button>
-            Sorry, there is problem with the server. Please ask for help.
+
+        <div class="pageContentView">
+            <!-- Apartado 1 -->
+            <transition name="fade">
+                <div class="pageContentView" v-if="apartado == 1">
+                    <div class="columns" style="height: 35%">
+                        <div class="column is-12 alingCenter">
+                            <div id="logo">
+                                <img src="./img/logo-negro.png" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="columns" style="height: 35%">
+                        <div class="column is-3 alingCenter">
+                            <button @click="changeTable('menos')"
+                                class="button is-info is-large nextViewButton">-</button>
+                        </div>
+                        <div class="column is-6 alingCenter">
+                            <div class="box boxSelectableTable">
+                                <label id="textBox">{{table}}</label>
+                            </div>
+                        </div>
+                        <div class="column is-3 alingCenter">
+                            <button @click="changeTable('mas')"
+                                class="button is-info is-large nextViewButton">+</button>
+                        </div>
+                    </div>
+
+                    <div class="columns" style="height: 30%;">
+                        <div class="column is-6  is-offset-one-quarter  alingCenter">
+                            <button onclick="sendTableIssue()"
+                                class="button is-large is-primary nextViewButton">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+
+            <!-- Apartado 2 -->
+            <transition name="fade">
+                <div class="pageContentView" v-if="apartado == 2">
+                    <div class="columns" style="height: 40%;"></div>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="columns">
+                                <div class="column alingCenter">
+                                    <label class="title is-1">Do you have any problem?</label>
+                                </div>
+                            </div>
+                            <div class="columns is-centered">
+                                <div class="column is-6 alingCenter">
+                                    <button @click="changeView()"
+                                        class="button is-primary is-large nextViewButton">Help</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+
+            <!-- Apartado 3 -->
+            <transition name="fade">
+                <div class="pageContentView" v-if="apartado == 3">
+                    <div class="columns" style="height: 20vh">
+                        <div class="column alingCenter" style="flex-direction: column;">
+                            <label class="title is-1">Let us help you.</label>
+                            <label class="title is-1">What's your problem?</label>
+                        </div>
+                    </div>
+                    <div class="columns is-marginless" style="height: 80vh">
+                        <div class="column is-half " style="padding: 2rem;">
+                            <div class="columns is-centered containersButtons alingCenter" @click="selectIssue()">
+                                <div class="box issueButtons alingCenter" style="background-color: var(--robot2)">
+                                    <div class="column is-half alingCenter">
+                                        <figure class="image is-128x128">
+                                            <img src="./img/burger.svg">
+                                        </figure>
+                                    </div>
+                                    <div class="column is-half">
+                                        <label class="title is-1 textBox">Food Related</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns is-centered containersButtons alingCenter" @click="selectIssue()">
+                                <div class="box issueButtons alingCenter" style="background-color: var(--primary)">
+                                    <div class="column is-half alingCenter">
+                                        <figure class="image is-128x128">
+                                            <img src="./img/waiter.svg">
+                                        </figure>
+                                    </div>
+                                    <div class="column is-half">
+                                        <label class="title is-1 textBox">Request Server</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column is-half" style="padding: 2rem;">
+                            <div class="columns is-centered containersButtons alingCenter" @click="selectIssue()">
+                                <div class="box issueButtons alingCenter" style="background-color: var(--success)">
+                                    <div class="column is-half alingCenter">
+                                        <figure class="image is-128x128">
+                                            <img src="./img/robot.svg">
+                                        </figure>
+                                    </div>
+                                    <div class="column is-half">
+                                        <label class="title is-1 textBox">Robot Related</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="columns is-centered containersButtons alingCenter" @click="selectIssue()">
+                                <div class="box issueButtons alingCenter" style="background-color: var(--robot1)">
+                                    <div class="column is-half alingCenter">
+                                        <figure class="image is-128x128">
+                                            <img src="./img/other.svg">
+                                        </figure>
+                                    </div>
+                                    <div class="column is-half">
+                                        <label class="title is-1 textBox">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </transition>
+
+
+            <!-- Apartado 4 -->
+            <transition name="fade">
+                <div class="pageContentView" v-if="apartado == 4">
+                    <div class="columns" style="height: 20%;"></div>
+                    <div class="columns" style="height: 20%;">
+                        <div class="column alingCenter" style="flex-direction: column;">
+                            <label class="title is-1">Request Recibed!</label>
+                            <label class="title is-1">Help is on the way</label>
+                        </div>
+                    </div>
+                    <div class="columns" style="height: 60%;">
+                        <div class="column alingCenter" style="flex-direction: column;">
+                            <div class="column is-half alingCenter">
+                                <div id="tick">
+                                    <img src="./img/tick.svg">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
+        </transition>
 
-        <!-- Config (only admin) -->
-        <label for="table">Table: </label>
-        <input v-model="table" name="table" type="number">
 
-        <!-- Send issue screen -->
-        <button onclick="sendIssue()" class="button is-primary">Send</button>
     </div>
 </body>
 <script src="js/main.js"></script>
+
 </html>

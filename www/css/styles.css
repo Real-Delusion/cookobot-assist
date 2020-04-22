@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    background-color: var(--lightbackground);
+}
+
+:root {
+    --success: rgb(126, 179, 66);
+    --danger: rgb(204, 80, 80);
+    --darkbackground: #293948;
+    --darker: #0D161D;
+    --lightbackground: #eaebed;
+    --disabled: rgba(149, 149, 149, 0.712);
+    --primary: #579597;
+    --robot1: #00b4be;
+    --robot2: #ffaa67;
+}
+
+#app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+}
+
+.pageContentView {
+    height: 100vh;
+}
+
+#logo {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.boxSelectableTable {
+    height: 50%;
+    width: 50%;
+    background-color: var(--darkbackground);
+}
+
+#textBox {
+    color: white;
+    font-size: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alingCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nextViewButton {
+    font-size: 2rem !important;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.9s;
+}
+
+/* .fade-leave-active below version 2.1.8 */
+.fade-enter,
+.fade-leave-to    {
+    opacity: 0;
+}
+.containersButtons{
+    height: 50%;
+}
+
+.issueButtons{
+    height: 75%;
+    width: 75%;
+    margin-top: 1rem;
+}
+
+.textBox{
+    color: aliceblue;
+}
+
+#tick{
+    width: 50%;
+}
