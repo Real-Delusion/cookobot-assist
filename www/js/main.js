@@ -12,7 +12,7 @@ var app = new Vue({
         issue: "",
     },
     mounted: function () {
-        this.table = localStorage.getItem("table");
+        this.table = "1"//localStorage.getItem("table");
     },
     methods: {
         hideNotifications: function(type){
