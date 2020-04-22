@@ -11,13 +11,12 @@ body {
     --success: rgb(126, 179, 66);
     --danger: rgb(204, 80, 80);
     --darkbackground: #293948;
-    --darker: #0D161D;
+    --darker: #0d161d;
     --lightbackground: #eaebed;
     --disabled: rgba(149, 149, 149, 0.712);
     --primary: #579597;
     --robot1: #00b4be;
     --robot2: #ffaa67;
-
 }
 
 #app {
@@ -68,20 +67,20 @@ body {
 
 /* .fade-leave-active below version 2.1.8 */
 .fade-enter,
-.fade-leave-to    {
+.fade-leave-to {
     opacity: 0;
 }
-.containersButtons{
+.containersButtons {
     height: 50%;
 }
 
-.issueButtons{
+.issueButtons {
     height: 75%;
     width: 75%;
     margin-top: 1rem;
 }
 
-.textBoxIssue{
+.textBoxIssue {
     color: aliceblue;
 }
 
@@ -89,7 +88,11 @@ body {
     width: 35%;
 }
 
-.imagesIssues{
+.imagesIssues {
     width: 75%;
     height: 75%;
+}
+.notification {
+    position: absolute;
+    top: 0;
 }
