@@ -22,7 +22,7 @@
                 Connected to control panel!
             </div>
 
-            <div v-if="!connected" class="notification is-info">
+            <div v-if="!connected" class="notification is-danger">
                 <button class="delete" @click="hideNotifications('now')"></button>
                 Sorry, there is problem with the server. Please ask for help.
             </div>
@@ -32,17 +32,25 @@
         <div id="contentPage">
             <!-- Apartado 1 -->
             <div class="pageContentView">
-                <div class="columns is-marginless is-centered" style="display: flex; flex-direction: column;">
-                    <div>
+                <div class="columns is-marginless is-centered" style="display: flex; flex-direction: column; height: 100%;">
+                    <div id="logoContainer">
                         <div id="logo">
                             <img src="./img/logo-negro.png" />
-                          </div>
-                        <!-- Config (only admin) -->
-                        <label for="table">Table: </label>
-                        <input v-model="table" name="table" type="number">
-
-                        <!-- Send issue screen -->
-                        <button onclick="sendIssue()" class="button is-primary">Send</button>
+                        </div>
+                    </div>
+                    <div id="selectableTable">
+                        <div class="columns is-marginless is-full">
+                            <div class="column is-one-quarter">
+                                <button onclick="sendIssue()" class="button is-primary">Send</button>
+                            </div>
+                            <div class="column box" id="boxSelectableTable">
+                                <!-- Config (only admin) -->
+                                <label style="color: white;">{{table}}</label>
+                            </div>
+                            <div class="column is-one-quarter">
+                                <button onclick="sendIssue()" class="button is-primary">Send</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
