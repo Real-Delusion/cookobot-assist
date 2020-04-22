@@ -41,6 +41,12 @@ var app = new Vue({
         },
         changeView: function(){
             this.apartado += 1;
+            if(this.apartado >= 4){
+                setTimeout(() => {
+                    this.apartado = 2;
+                }, 5000);
+
+            }
         },
         selectIssue: function(issue){
             this.issue = issue;
