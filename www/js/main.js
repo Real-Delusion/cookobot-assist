@@ -60,7 +60,7 @@ var app = new Vue({
 /* -----------------------
 --------- Socket ---------
 --------------------------*/
-var socket = io('http://localhost:3000');
+var socket = io('http://192.168.1.124:3000');
 socket.on('connect', () => {
     app.connected = true;
     app.controlNotifications = true;
@@ -75,7 +75,7 @@ socket.on('disconnect', () => {
 });
 
 function sendIssue() {
-    socket.emit('issue', app.table);
+    socket.emit('issue', app.table, app.issue);
     console.log("Issue sent from table:"+app.table)
 }
 
