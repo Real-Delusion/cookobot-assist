@@ -17,14 +17,14 @@
     <div id="app">
         <!-- Notifications -->
         <div v-if="controlNotifications" id="topView">
-            <div v-if="connected" class="notification is-success" style="margin: 0.1rem">
+            <div v-if="connected" class="notification is-success">
                 <button class="delete" @click="hideNotifications('now')"></button>
-                Connected to control panel!
+                <strong> Connected to control panel! </strong>
             </div>
 
             <div v-if="!connected" class="notification is-danger">
                 <button class="delete" @click="hideNotifications('now')"></button>
-                Sorry, there is problem with the server. Please ask for help.
+                <strong>Sorry, there is problem with the server. Please ask for help. </strong>
             </div>
         </div>
 
@@ -43,8 +43,7 @@
 
                     <div class="columns is-mobile" style="height: 35%">
                         <div class="column is-3 alingCenter">
-                            <button @click="changeTable('menos')"
-                                class="button is-info is-large">-</button>
+                            <button @click="changeTable('menos')" class="button is-info is-large">-</button>
                         </div>
                         <div class="column is-6 alingCenter">
                             <div class="box boxSelectableTable alingCenter">
@@ -52,15 +51,13 @@
                             </div>
                         </div>
                         <div class="column is-3 alingCenter">
-                            <button @click="changeTable('mas')"
-                                class="button is-info is-large">+</button>
+                            <button @click="changeTable('mas')" class="button is-info is-large">+</button>
                         </div>
                     </div>
 
                     <div class="columns is-mobile" style="height: 30%;">
                         <div class="column is-6  is-offset-one-quarter  alingCenter">
-                            <button @click="changeView()"
-                                class="button is-large is-primary">Next</button>
+                            <button @click="changeView()" class="button is-large is-primary">Next</button>
                         </div>
                     </div>
                 </div>
@@ -79,8 +76,7 @@
                             </div>
                             <div class="columns is-mobile is-centered">
                                 <div class="column is-6 alingCenter">
-                                    <button @click="changeView()"
-                                        class="button is-primary is-large">Help</button>
+                                    <button @click="changeView()" class="button is-primary is-large">Help</button>
                                 </div>
                             </div>
                         </div>
@@ -93,12 +89,14 @@
                 <div class="pageContentView" v-if="apartado == 3">
                     <div class="columns is-mobile" style="height: 20vh">
                         <div class="column alingCenter" style="flex-direction: column; margin-top: 2rem;">
-                            <label class="title is-3" style="text-align: center;">Let us help you.<br>What's your problem?</label>
+                            <label class="title is-3" style="text-align: center;">Let us help you.<br>What's your
+                                problem?</label>
                         </div>
                     </div>
                     <div class="columns is-mobile is-marginless" style="height: 80vh">
                         <div class="column is-half " style="padding: 2rem;">
-                            <div class="columns is-mobile is-centered containersButtons alingCenter" @click="selectIssue('Food related')">
+                            <div class="columns is-mobile is-centered containersButtons alingCenter"
+                                @click="selectIssue('Food related')">
                                 <div class="box issueButtons alingCenter" style="background-color: var(--robot2)">
                                     <div class="column is-half alingCenter">
                                         <div class="imagesIssues">
@@ -110,7 +108,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="columns is-mobile is-centered containersButtons alingCenter" @click="selectIssue('Request Server')">
+                            <div class="columns is-mobile is-centered containersButtons alingCenter"
+                                @click="selectIssue('Request Server')">
                                 <div class="box issueButtons alingCenter" style="background-color: var(--primary)">
                                     <div class="column is-half alingCenter">
                                         <div class="imagesIssues">
@@ -124,7 +123,8 @@
                             </div>
                         </div>
                         <div class="column is-half" style="padding: 2rem;">
-                            <div class="columns is-mobile is-centered containersButtons alingCenter" @click="selectIssue('Robot related')">
+                            <div class="columns is-mobile is-centered containersButtons alingCenter"
+                                @click="selectIssue('Robot related')">
                                 <div class="box issueButtons alingCenter" style="background-color: var(--success)">
                                     <div class="column is-half alingCenter">
                                         <div class="imagesIssues">
@@ -136,7 +136,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="columns  is-mobile is-centered containersButtons alingCenter" @click="selectIssue('Other')">
+                            <div class="columns  is-mobile is-centered containersButtons alingCenter"
+                                @click="selectIssue('Other')">
                                 <div class="box issueButtons alingCenter" style="background-color: var(--robot1)">
                                     <div class="column is-half alingCenter">
                                         <div class="imagesIssues">

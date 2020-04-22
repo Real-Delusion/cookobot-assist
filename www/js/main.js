@@ -12,7 +12,9 @@ var app = new Vue({
         issue: "",
     },
     mounted: function () {
-        this.table = "1"//localStorage.getItem("table");
+        this.table = "1";//localStorage.getItem("table");
+        this.showNotifications();
+        this.hideNotifications();
     },
     methods: {
         hideNotifications: function(type){
@@ -25,6 +27,9 @@ var app = new Vue({
                 }, 5000);
             }
             
+        },
+        showNotifications: function(){
+            this.controlNotifications = true;
         },
         changeTable: function(direccion){
             if (direccion == "menos"){
@@ -66,16 +71,16 @@ var app = new Vue({
 /* -----------------------
 --------- Socket ---------
 --------------------------*/
-var socket = io('http://192.168.1.124:3000');
+var socket = io('http://localhost:3000');
 socket.on('connect', () => {
     app.connected = true;
-    app.controlNotifications = true;
+    app.showNotifications();
     app.hideNotifications('');
 });
 socket.on('event', function (data) { });
 socket.on('disconnect', () => {
     app.connected = false;
-    app.controlNotifications = true;
+    app.showNotifications();
     app.hideNotifications('');
 
 });
