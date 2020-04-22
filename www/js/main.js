@@ -22,9 +22,11 @@ var app = new Vue({
                 this.controlNotifications = false;
             }
             else {
-                setTimeout(() => {
-                    this.controlNotifications = false
-                }, 5000);
+                if(this.connected != false){
+                    setTimeout(() => {
+                        this.controlNotifications = false
+                    }, 5000);
+                }
             }
             
         },
